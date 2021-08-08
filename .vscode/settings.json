@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "bst.h": "c",
+        "stdio.h": "c"
+    }
+}
