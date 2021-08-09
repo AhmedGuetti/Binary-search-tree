@@ -38,9 +38,13 @@ print_current_level(bst1, 3);
 printf("\n");
 printf("%d\n",height(bst1));
 print_level_order(bst1);
-
-
-
+printf("\n");
+Preorder(bst1);
+printf("\n");
+Inorder(bst1);
+printf("\n");
+Postorder(bst1);
+printf("\n");
 
     return 0;
 }

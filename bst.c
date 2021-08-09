@@ -7,20 +7,11 @@
 #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
-
-
-
-
-
-
-
 Tree* makeBST(){
     Tree* new_tree = (Tree*)malloc(sizeof(Tree));
     *new_tree = NULL;
     return new_tree;
 }
-
-
 Tree make_node(int data){
     Tree new_node = (Tree)malloc(sizeof(Node));
     new_node->data = data;
@@ -28,8 +19,6 @@ Tree make_node(int data){
     new_node->right=NULL;
     return new_node;
 }
-
-
 
 void Inserte(Tree* treename,int data){
     if (*treename == NULL) {
@@ -43,7 +32,6 @@ void Inserte(Tree* treename,int data){
         Inserte(&(*treename)->right,data);
     }
 }
-
 int TreeMin(Tree treename){
     if(treename == NULL) {
         printf("The list is Empty");
@@ -92,5 +80,29 @@ void print_level_order(Tree* treename){
 
         print_current_level(&(*treename),i);
     }
+    
+}
+
+void Preorder(Tree* treename){
+    if (*treename == NULL) return;
+    
+    printf("%d ",(*treename)->data);
+    Preorder(&(*treename)->left);
+    Preorder(&(*treename)->right);    
+}
+
+void Inorder(Tree* treename){
+    if (*treename == NULL) return;
+    Inorder(&(*treename)->left);
+    printf("%d ",(*treename)->data);
+    Inorder(&(*treename)->right);
+    
+}
+
+void Postorder(Tree* treename){
+    if (*treename == NULL) return;
+    Postorder(&(*treename)->left);
+    Postorder(&(*treename)->right);
+    printf("%d ",(*treename)->data);
     
 }

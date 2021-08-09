@@ -23,5 +23,8 @@ int TreeMax(Tree* treename);
 int height(Tree* treename);
 void print_current_level(Tree* treename, int level);
 void print_level_order(Tree* treename);
+void Preorder(Tree* treename);
+void Inorder(Tree* treename);
+void Postorder(Tree* treename);
 #endif
 
