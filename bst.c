@@ -1,10 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "bst.h"
-#include "list.h"
+
 
 #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+
+
+
+
+
+
+
+
 Tree* makeBST(){
     Tree* new_tree = (Tree*)malloc(sizeof(Tree));
     *new_tree = NULL;
@@ -61,4 +70,27 @@ int height(Tree* treename){
  
     return MAX(height(&(*treename)->left) ,height(&(*treename)->right))+1;
 
+}
+
+
+void print_current_level(Tree* treename, int level){
+
+    if (*treename == NULL) return;
+    if (level == 1)
+        printf("%d ", (*treename)->data);
+    else if(level > 1)
+         print_current_level(&(*treename)->left,level-1);
+         print_current_level(&(*treename)->right,level-1);
+}
+
+
+void print_level_order(Tree* treename){
+    int treeheight = height(treename);
+    printf("%d\n",treeheight);
+    for (int i = 1; i <= treeheight+1; i++)
+    {
+
+        print_current_level(&(*treename),i);
+    }
+    
 }
