@@ -32,3 +32,21 @@ void Inserte(Tree* treename,int data){
         Inserte(&(*treename)->right,data);
     }
 }
+
+int Min(Tree treename){
+    if(treename == NULL) {
+        printf("The list is Empty");
+        return -1;
+         }
+    while (treename->left != NULL){
+        treename = treename->left;
+    }
+    
+   return treename->data;
+}
+
+int Max(Tree* treename){
+    if(*treename == NULL) return -1;
+    else if((*treename)->right == NULL) return (*treename)->data;
+    Max(&(*treename)->right);
+}
