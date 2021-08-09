@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bst.h"
+#include "list.h"
 
-
+#define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
+#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 Tree* makeBST(){
     Tree* new_tree = (Tree*)malloc(sizeof(Tree));
     *new_tree = NULL;
@@ -33,7 +35,7 @@ void Inserte(Tree* treename,int data){
     }
 }
 
-int Min(Tree treename){
+int TreeMin(Tree treename){
     if(treename == NULL) {
         printf("The list is Empty");
         return -1;
@@ -45,8 +47,18 @@ int Min(Tree treename){
    return treename->data;
 }
 
-int Max(Tree* treename){
+int TreeMax(Tree* treename){
     if(*treename == NULL) return -1;
     else if((*treename)->right == NULL) return (*treename)->data;
-    Max(&(*treename)->right);
+    TreeMax(&(*treename)->right);
+}
+
+
+
+int height(Tree* treename){
+
+    if (*treename == NULL) return -1;
+ 
+    return MAX(height(&(*treename)->left) ,height(&(*treename)->right))+1;
+
 }

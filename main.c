@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bst.h"
+#include "list.h"
 
 
 
@@ -20,10 +21,9 @@ Inserte(bst1,25);
 Inserte(bst1,12);
 Inserte(bst1,17);
 Inserte(bst1,8);
-Inserte(bst1,0);
-Inserte(bst1,13);
-Inserte(bst1,-13);
-printf("%d,%d\n",Max(bst1),Min(*bst1));
+
+printf("%d,%d\n",TreeMax(bst1),TreeMin(*bst1));
+printf("%d\n",height(bst1));
 
 
 

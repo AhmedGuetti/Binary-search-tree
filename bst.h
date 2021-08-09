@@ -18,6 +18,7 @@ typedef struct node * Tree;
 Tree* makeBST();
 void Inserte(Tree* treename,int data);
 void postorderTraversal(Tree* node);
-int Min(Tree treename);
-int Max(Tree* treename);
+int TreeMin(Tree treename);
+int TreeMax(Tree* treename);
+int height(Tree* treename);
 #endif
