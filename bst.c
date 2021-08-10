@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 #include "bst.h"
 
 
@@ -86,7 +87,7 @@ void print_level_order(Tree* treename){
 void Preorder(Tree* treename){
     if (*treename == NULL) return;
     
-    printf("%d ",(*treename)->data);
+    printf("%d,",(*treename)->data);
     Preorder(&(*treename)->left);
     Preorder(&(*treename)->right);    
 }
@@ -105,4 +106,61 @@ void Postorder(Tree* treename){
     Postorder(&(*treename)->right);
     printf("%d ",(*treename)->data);
     
+}
+
+
+
+int isBST_Utilitie(Tree* treename,int min_value,int max_value){
+    if(*treename == NULL) return 1;
+    if((*treename)->data > min_value && (*treename)->data < max_value
+    && isBST_Utilitie(&(*treename)->left,min_value,(*treename)->data)
+    && isBST_Utilitie(&(*treename)->right,(*treename)->data,max_value)
+    ) return 1;
+    return 0;
+}
+
+int isbst(Tree* treename){
+isBST_Utilitie(treename , INT_MIN,INT_MAX);
+}
+
+
+
+
+void Delete(Tree* treename,int data){
+    if (*treename == NULL) return;
+    else if(data > (*treename)->data) Delete(&(*treename)->right,data);
+    else if(data < (*treename)->data) Delete(&(*treename)->left,data);
+    // the element to be removed if founded in this stage
+    else
+    {
+        //case 1 : a leaf node
+        if ((*treename)->right == NULL && (*treename)->left == NULL)
+        {
+            free(*treename);
+            *treename == NULL;
+        }
+        //case 2 : a one child node
+        else if((*treename)->left == NULL){
+            Tree temp = *treename;
+            (*treename) = (*treename)->right;
+            free(temp); 
+        }
+        else if((*treename)->right == NULL){
+            Tree temp = *treename;
+            (*treename) = (*treename)->left;
+            free(temp); 
+        }
+        //case 3 : two child node
+        else {
+            Tree temp = *treename;
+            while (temp->right->left != NULL){
+            temp->right = temp->right->left;
+            }
+            (*treename)->data = temp -> data;
+            Delete(&(*treename)->right,temp->data);
+        }
+    }
+    
+    
+
 }

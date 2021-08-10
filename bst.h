@@ -26,5 +26,7 @@ void print_level_order(Tree* treename);
 void Preorder(Tree* treename);
 void Inorder(Tree* treename);
 void Postorder(Tree* treename);
+int isbst(Tree* treename);
+void Delete(Tree* treename,int data);
 #endif
 
